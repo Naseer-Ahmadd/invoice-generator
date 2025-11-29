@@ -139,8 +139,8 @@ function Editor({ data, onChange }) {
             <section className="space-y-3 border-b pb-4">
                 <h3 className="font-semibold text-gray-700">Line Items</h3>
                 {data.items.map((item, index) => (
-                    <div key={item.id} className="flex gap-2 items-start mb-2">
-                        <div className="flex-1">
+                    <div key={item.id} className="flex flex-wrap md:flex-nowrap gap-2 items-start mb-4 md:mb-2 border-b pb-4 md:border-b-0 md:pb-0">
+                        <div className="w-full md:flex-1 order-1 md:order-none">
                             <input
                                 type="text"
                                 value={item.particular}
@@ -149,34 +149,36 @@ function Editor({ data, onChange }) {
                                 className="w-full p-2 border rounded"
                             />
                         </div>
-                        <div className="w-20">
-                            <input
-                                type="number"
-                                value={item.quantity}
-                                onChange={(e) => handleItemChange(index, 'quantity', Number(e.target.value))}
-                                placeholder="Qty"
-                                className="w-full p-2 border rounded"
-                            />
+                        <div className="flex gap-2 w-full md:w-auto order-2 md:order-none">
+                            <div className="w-20">
+                                <input
+                                    type="number"
+                                    value={item.quantity}
+                                    onChange={(e) => handleItemChange(index, 'quantity', Number(e.target.value))}
+                                    placeholder="Qty"
+                                    className="w-full p-2 border rounded"
+                                />
+                            </div>
+                            <div className="w-24">
+                                <input
+                                    type="number"
+                                    value={item.rate}
+                                    onChange={(e) => handleItemChange(index, 'rate', Number(e.target.value))}
+                                    placeholder="Rate"
+                                    className="w-full p-2 border rounded"
+                                />
+                            </div>
+                            <div className="flex-1 md:w-24 pt-2 text-right font-medium">
+                                {item.amount.toLocaleString()}
+                            </div>
+                            <button
+                                onClick={() => removeItem(index)}
+                                className="p-2 text-red-500 hover:bg-red-50 rounded"
+                                title="Remove Item"
+                            >
+                                <Trash2 size={18} />
+                            </button>
                         </div>
-                        <div className="w-24">
-                            <input
-                                type="number"
-                                value={item.rate}
-                                onChange={(e) => handleItemChange(index, 'rate', Number(e.target.value))}
-                                placeholder="Rate"
-                                className="w-full p-2 border rounded"
-                            />
-                        </div>
-                        <div className="w-24 pt-2 text-right font-medium">
-                            {item.amount.toLocaleString()}
-                        </div>
-                        <button
-                            onClick={() => removeItem(index)}
-                            className="p-2 text-red-500 hover:bg-red-50 rounded"
-                            title="Remove Item"
-                        >
-                            <Trash2 size={18} />
-                        </button>
                     </div>
                 ))}
                 <button

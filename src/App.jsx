@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Editor from './components/Editor';
 import Preview from './components/Preview';
+import defaultLogo from './assets/logo.png';
 
 function App() {
   const [invoiceData, setInvoiceData] = useState({
@@ -9,7 +10,7 @@ function App() {
       tagline: 'Simplifying Business World',
       address: 'Numan Plaza Karan Nagar, Srinagar J&K 190010',
       phone: '9906545900 / 9858392856',
-      logo: '/src/assets/logo.png',
+      logo: defaultLogo,
     },
     client: {
       name: 'MR: Naseer Ahmad',
