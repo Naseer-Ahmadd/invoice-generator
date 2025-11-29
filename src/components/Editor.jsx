@@ -6,6 +6,14 @@ function Editor({ data, onChange }) {
         onChange({ company: { ...data.company, [e.target.name]: e.target.value } });
     };
 
+    const handleLogoChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const logoUrl = URL.createObjectURL(file);
+            onChange({ company: { ...data.company, logo: logoUrl } });
+        }
+    };
+
     const handleClientChange = (e) => {
         onChange({ client: { ...data.client, [e.target.name]: e.target.value } });
     };
@@ -49,6 +57,15 @@ function Editor({ data, onChange }) {
             {/* Company Details */}
             <section className="space-y-3 border-b pb-4">
                 <h3 className="font-semibold text-gray-700">Company Details</h3>
+                <div>
+                    <label className="block text-sm text-gray-600 mb-1">Logo</label>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleLogoChange}
+                        className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                    />
+                </div>
                 <input
                     type="text"
                     name="name"

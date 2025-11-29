@@ -9,9 +9,10 @@ function App() {
       tagline: 'Simplifying Business World',
       address: 'Numan Plaza Karan Nagar, Srinagar J&K 190010',
       phone: '9906545900 / 9858392856',
+      logo: '/src/assets/logo.png',
     },
     client: {
-      name: 'MS: Danish Ahmad (Musaid Travels)',
+      name: 'MR: Naseer Ahmad',
     },
     invoice: {
       number: '001',
@@ -34,15 +35,17 @@ function App() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-100 overflow-hidden">
+    <div className="flex flex-col lg:flex-row h-auto lg:h-screen bg-gray-100 overflow-hidden">
       {/* Left Side: Editor */}
-      <div className="w-1/2 h-full overflow-y-auto border-r border-gray-300 bg-white p-6 print:hidden">
+      <div className="w-full lg:w-1/2 h-auto lg:h-full overflow-y-auto border-r border-gray-300 bg-white p-6 print:hidden">
         <Editor data={invoiceData} onChange={updateInvoiceData} />
       </div>
 
       {/* Right Side: Preview */}
-      <div className="w-1/2 h-full overflow-y-auto bg-gray-500 p-8 flex justify-center print:w-full print:h-auto print:bg-white print:p-0 print:overflow-visible">
-        <Preview data={invoiceData} />
+      <div className="w-full lg:w-1/2 h-auto lg:h-full overflow-y-auto bg-gray-500 p-8 flex justify-center items-start print:w-full print:h-auto print:bg-white print:p-0 print:overflow-visible overflow-x-auto">
+        <div className="min-w-fit">
+          <Preview data={invoiceData} />
+        </div>
       </div>
     </div>
   );

@@ -17,7 +17,9 @@ function Preview({ data }) {
                 {/* Header */}
                 <div className="flex justify-between items-start mb-8">
                     <div className="flex items-center gap-4">
-                        <img src="/src/assets/logo.png" alt="Logo" className="h-16 w-auto object-contain" />
+                        {data.company.logo && (
+                            <img src={data.company.logo} alt="Logo" className="h-16 w-auto object-contain" />
+                        )}
                         <div>
                             <h1 className="text-2xl font-bold text-purple-600">{data.company.name}</h1>
                             <p className="text-orange-500 font-medium tracking-wide uppercase text-xs">{data.company.tagline}</p>
